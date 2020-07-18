@@ -1,8 +1,9 @@
-package Acao;
+package acao;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import Modelo.Exame;
+import dao.ExameDAO;
+import modelo.Exame;
 
 public class RegisterAction extends ActionSupport {
 
@@ -12,7 +13,12 @@ public class RegisterAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
+
 		System.out.println("Exame: " + exame.getNomeExame());
+		
+		ExameDAO exameDAO = new ExameDAO();
+		exameDAO.salvar(exame);
+	
         return "success";
     }
 
