@@ -28,12 +28,13 @@
 <b>struts.xml</b> <br />
 1. Arquivo que define as tags <action>. <br />
 2. Abaixo está indicado em qual etapa do CRUD cada action é utilizada. <br />
-<i>registerAction:</i> Create - Cadastrar um novo dado. <br />
-<i>welcomeAction:</i> Read - Listar os dados. <br />
-<i>updateDataAction:</i> Update - Editar um dado, usado para redirecionar um usuário para uma página auxiliar que mostrará os dados de um Exame especifico para alteração. <br />
-<i>updateAction:</i> Update - Editar o dado. <br />
-<i>deleteAction:</i> Delete - Deletar o dado. <br />
-	
+<ul>
+<li><i>registerAction:</i> Create - Cadastrar um novo dado. <br /></li>
+<li><i>welcomeAction:</i> Read - Listar os dados. <br /></li>
+<li><i>updateDataAction:</i> Update - Editar um dado, usado para redirecionar um usuário para uma página auxiliar que mostrará os dados de um Exame especifico para alteração. <br /></li>
+<li><i>updateAction:</i> Update - Editar o dado. <br /></li>
+<li><i>deleteAction:</i> Delete - Deletar o dado. <br /></li>
+</ul>	
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
