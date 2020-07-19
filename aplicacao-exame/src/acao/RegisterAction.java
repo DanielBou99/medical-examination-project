@@ -14,12 +14,13 @@ public class RegisterAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("Exame: " + exame.getNomeExame());
+		System.out.println("Salvando exame: " + exame.getNomeExame());
 		
-		ExameDAO exameDAO = new ExameDAO();
-		exameDAO.salvar(exame);
-	
-        return "success";
+		if (ExameDAO.salvar(exame) == 1) {
+			return "success";
+		}
+		
+        return "error";
     }
 
 	public Exame getExame() {

@@ -6,9 +6,15 @@
 	
 <struts>
 	<package name="register" extends="struts-default">
+		
 		<action name="registerAction" class="acao.RegisterAction">
-			<result name="success">/welcome.jsp</result>
-			<result name="input">/register.jsp</result>
+			<result name="success" type="redirect">welcomeAction</result>
+			<result name="error">/register.jsp</result>
 		</action>
+
+		<action name="welcomeAction" class="acao.WelcomeAction">
+			<result name="success">/welcome.jsp</result>
+		</action>
+
 	</package>
 </struts> 
