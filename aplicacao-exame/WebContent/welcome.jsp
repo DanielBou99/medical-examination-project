@@ -17,6 +17,7 @@
 			<tr>
 				<th>Exame ID</th>
 				<th>Exame Nome</th>
+				<th>Exame Editar</th>
 			</tr>
 		</thead>
 	
@@ -27,6 +28,12 @@
 				</td>
 				<td>
 					<s:property value="#exame.nomeExame"/>
+				</td>
+				<td>
+					<a
+					href="updateDataAction?exameId=<s:property value="#exame.id"/>">
+						<button class="actionBtn">Editar</button>
+					</a> 
 				</td>
 			</tr>
 		</s:iterator>

@@ -32,8 +32,7 @@ public class ExameDAO {
 		return status;
 	}
 	
-	public static List<Exame> pegarTodosExames()
-	{
+	public static List<Exame> pegarTodosExames() {
 		List<Exame> listaExames = new ArrayList<Exame>();
 		
 		try {
@@ -54,6 +53,42 @@ public class ExameDAO {
 		}
 		
 		return listaExames;
+	}
+	
+	public static Exame pegarExamePeloId(String exameId) {
+		Exame exame = null;
+		
+		try {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps= conn.prepareStatement("select * from exame where idExame = ?");
+			ps.setString(1, exameId);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				exame = new Exame(rs.getInt("idExame"), rs.getString("nomeExame"));
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return exame;
+	}
+	
+	public static int atualizarExame(Exame exame) {
+		int status = 0;
+		try {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps= conn.prepareStatement("update exame set nomeExame=? WHERE idExame=?");
+			ps.setString(1, exame.getNomeExame());
+			ps.setInt(2, exame.getId());
+			status = ps.executeUpdate();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return status;
 	}
 
 }

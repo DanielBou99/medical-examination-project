@@ -14,6 +14,12 @@ public class Exame {
 		this.nomeExame = nomeExame;
 	}
 	
+	public Exame(Integer id, String nomeExame) {
+		super();
+		this.id = id;
+		this.nomeExame = nomeExame;
+	}
+
 	public Integer getId() {
 		return id;
 	}

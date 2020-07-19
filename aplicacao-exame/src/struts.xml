@@ -15,6 +15,16 @@
 		<action name="welcomeAction" class="acao.WelcomeAction">
 			<result name="success">/welcome.jsp</result>
 		</action>
+		
+		<action name="updateDataAction" class="acao.UpdateDataAction">
+			<result name="success">/updateExame.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="updateAction" class="acao.UpdateAction">
+			<result name="success" type="redirect">welcomeAction</result>
+			<result name="error">/error.jsp</result>
+		</action>
 
 	</package>
 </struts> 
