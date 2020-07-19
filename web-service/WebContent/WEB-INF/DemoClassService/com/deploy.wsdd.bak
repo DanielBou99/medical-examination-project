@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DemoClassService WSDL service -->
+
+  <service name="DemoClass" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://com"/>
+      <parameter name="wsdlServiceElement" value="DemoClassService"/>
+      <parameter name="schemaQualified" value="http://com"/>
+      <parameter name="wsdlServicePort" value="DemoClass"/>
+      <parameter name="className" value="com.DemoClassSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="DemoClass"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="func" qname="operNS:func" xmlns:operNS="http://com" returnQName="retNS:funcReturn" xmlns:retNS="http://com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:a" xmlns:pns="http://com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="func"/>
+
+  </service>
+</deployment>
