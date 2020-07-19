@@ -6,18 +6,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registrar</title>
+<link rel="stylesheet" href="style.css">
 <s:head/>
 </head>
 <body>
+	<div align="center">
 
-	<h2>Registrar Exame</h2>
-	
-	<s:form action="registerAction">
-		<s:textfield name="exame.nomeExame" label="Exame" /> 
+		<h2>Registrar Exame</h2>
 		
-		<s:reset value="Reset" />
-		<s:submit value="Register"  />
-	</s:form>
+		<a href="welcomeAction">
+			<button class="actionBtn">Listar exames</button>
+		</a>
+		
+		<s:form action="registerAction" class="formTable">
+			<s:textfield name="exame.nomeExame" label="Exame" /> 
+			
+			<s:reset value="Reset" class="actionBtn"/>
+			<s:submit value="Register" class="actionBtn"/>
+		</s:form>
 	
+	</div>
 </body>
 </html>
