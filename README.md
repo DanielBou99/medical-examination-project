@@ -1,6 +1,127 @@
 # medical-examination-project
 
+<h3>Configuração do Struts </h3>
+<b>DBUtil</b> <br />
+1. Incluir as tags <filter> no web.xml. <br />
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>curso-struts</display-name>
+  <welcome-file-list>
+    <welcome-file>success</welcome-file>
+  </welcome-file-list>
+  
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+</web-app>
+```
+
+<b>struts.xml</b> <br />
+1. Arquivo que define as tags <action>. <br />
+2. Abaixo está indicado em qual etapa do CRUD cada action é utilizada.
+<i>registerAction:</i> Create - Cadastrar um novo dado.
+<i>welcomeAction:</i> Read - Listar os dados.
+<i>updateDataAction:</i> Update - Editar um dado, usado para redirecionar um usuário para uma página auxiliar que mostrará os dados de um Exame especifico para alteração.
+<i>updateAction:</i> Update - Editar o dado.
+<i>deleteAction:</i> Delete - Deletar o dado.
+	
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+	
+<struts>
+	<package name="register" extends="struts-default">
+		
+		<action name="registerAction" class="acao.RegisterAction">
+			<result name="success" type="redirect">welcomeAction</result>
+			<result name="error">/register.jsp</result>
+		</action>
+
+		<action name="welcomeAction" class="acao.WelcomeAction">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		
+		<action name="updateDataAction" class="acao.UpdateDataAction">
+			<result name="success">/updateExame.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="updateAction" class="acao.UpdateAction">
+			<result name="success" type="redirect">welcomeAction</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="deleteAction" class="acao.DeleteAction">
+			<result name="success" type="redirect">welcomeAction</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+	</package>
+</struts> 
+```
+
+<br /><br />
+--------------------------------------------
+<br /><br />
+
 <h3>Banco de Dados </h3>
+
+<b>DBUtil</b> <br />
+1. Configurações do Banco de Dados. <br />
+1. Retorna conexão com o Banco de Dados. <br />
+
+```
+package factory;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBUtil {
+	
+	public static Connection getConnection()
+	{
+		Connection conn = null;
+		try 
+		{
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		    conn = DriverManager.getConnection("jdbc:mysql://localhost/exames?useTimezone=true&serverTimezone=UTC","root","admin");
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return conn;
+	}
+	
+	
+	public static void closeConnection(Connection conn)
+	{
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+```
+
 <b>ExameDAO</b> <br />
 1. Classe responsável por interagir com o Banco de Dados. <br />
 
@@ -413,10 +534,6 @@ public class UpdateDataAction extends ActionSupport{
 
 ```
 
-<br /><br />
---------------------------------------------
-<br /><br />
-
 <b>updateExame.jsp</b> <br />
 1. Classe recebe dados do Exame pela classe UpdateDataAction. <br />
 2. Envia dados para a classe UpdateAction. <br />
@@ -454,10 +571,6 @@ public class UpdateDataAction extends ActionSupport{
 </body>
 </html>
 ```
-
-<br /><br />
---------------------------------------------
-<br /><br />
 
 <b>UpdateAction</b> <br />
 1. Classe recebe dados do Exame pela página updateExame.jsp. <br />
