@@ -26,5 +26,10 @@
 			<result name="error">/error.jsp</result>
 		</action>
 
+		<action name="deleteAction" class="acao.DeleteAction">
+			<result name="success" type="redirect">welcomeAction</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
 	</package>
 </struts> 

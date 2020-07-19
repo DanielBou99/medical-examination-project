@@ -18,6 +18,7 @@
 				<th>Exame ID</th>
 				<th>Exame Nome</th>
 				<th>Exame Editar</th>
+				<th>Exame Deletar</th>
 			</tr>
 		</thead>
 	
@@ -34,6 +35,11 @@
 					href="updateDataAction?exameId=<s:property value="#exame.id"/>">
 						<button class="actionBtn">Editar</button>
 					</a> 
+				</td>
+				<td>
+					<a href="deleteAction?exameId=<s:property value="#exame.id"/>">
+						<button class="actionBtn">Deletar</button>
+					</a>
 				</td>
 			</tr>
 		</s:iterator>

@@ -90,5 +90,18 @@ public class ExameDAO {
 		}
 		return status;
 	}
+	
+	public static int deletarExame(String exameId) {
+		int status = 0;
+		try {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps= conn.prepareStatement("delete from exame where idExame = ?");
+			ps.setString(1, exameId);
+			status = ps.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
 
 }
