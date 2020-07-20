@@ -1,8 +1,8 @@
 # medical-examination-project
 
 <h3>Configuração do Struts </h3>
-<b>DBUtil</b> <br />
-1. Incluir as tags <filter> no web.xml. <br />
+<b>web.xml</b> <br />
+1. Incluir as tags filter no web.xml. <br />
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -26,7 +26,7 @@
 ```
 
 <b>struts.xml</b> <br />
-1. Arquivo que define as tags <action>. <br />
+1. Arquivo que define as tags action. <br />
 2. Abaixo está indicado em qual etapa do CRUD cada action é utilizada. <br />
 <ul>
 <li><i>registerAction:</i> Create - Cadastrar um novo dado. <br /></li>
