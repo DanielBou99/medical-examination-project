@@ -1,8 +1,8 @@
 # medical-examination-project
 
 <h3>Configuração do Struts </h3>
-<b>web.xml</b> <br />
-1. Incluir as tags filter no web.xml. <br />
+<b><a href="https://github.com/DanielBou99/medical-examination-project/blob/master/aplicacao-exame/WebContent/WEB-INF/web.xml">web.xml</a></b> <br />
+1. Incluir as tags filter no web.xml.<br />
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
